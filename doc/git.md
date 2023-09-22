@@ -113,3 +113,12 @@ git pull
 
 git merge $branch
 ```
+
+## .gitignore cache issue fix
+
+```bash
+git rm -r --cached .
+git add --all && git commit -m "fix: .gitignore cache issue"
+
+reload IDE
+```
