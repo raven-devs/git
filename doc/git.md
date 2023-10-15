@@ -1,124 +1,85 @@
-# Git (Gitflow Workflow)
+# Git
 
-## Init
+## Commamds
 
-```sh
-# init git, create main branch, create develop branch from main branch
-rm -rf .git
-echo "# create-be-template" >> README.md
-git init
-git config user.name spetushkou
-git config user.email sergey.petushkou@gmail.com
-git remote add origin git@github.com:raven-devs/create-be-template.git
-git checkout -b main
-git add --all && git commit -m 'chore: init'
-git push -u origin main
-git checkout -b develop
-git push -u origin develop
-```
+```bash
+# clone a repo
+git clone $repo_url $dir
 
-## Feature | Fix
-
-```sh
-# create FEAT-001/feature_001 branch from develop branch
-git checkout develop
-git pull
-git checkout -b FEAT-001/feature_001
-
-# work happens on FEAT-001/feature_001 branch
-git add --all && git commit -m 'feat: FEAT-001/feature_001'
-git push -u origin FEAT-001/feature_001
-# pull request happens on FEAT-001/feature_001 branch
-
-# merge develop branch to FEAT-001/feature_001 branch
-git checkout develop
-git pull
-git checkout FEAT-001/feature_001
-git merge develop
-# code merge conflicts happens on FEAT-001/feature_001 branch
-git add --all && git commit -m 'chore: merge develop to FEAT-001/feature_001'
-git push
-
-# merge FEAT-001/feature_001 branch to develop branch and delete FEAT-001/feature_001 branch
-git checkout develop
-git pull
-git merge FEAT-001/feature_001
-git push
-git branch -D FEAT-001/feature_001
-```
-
-## Hotfix
-
-```sh
-# create hotfix branch from main branch
-git checkout main
-git pull
-git checkout -b hotfix
-
-# work happens on hotfix branch
-git add --all && git commit -m 'fix: hotfix'
-git push -u origin hotfix
-# pull request happens on hotfix branch
-
-# merge hotfix branch to develop branch
-git checkout develop
-git pull
-git merge hotfix
-# code merge conflicts happens on develop branch
-git add --all && git commit -m 'chore: merge hotfix to develop'
-git push
-
-# merge hotfix branch to main branch
-git checkout main
-git pull
-git merge hotfix
-# code merge conflicts happens on main branch
-git add --all && git commit -m 'merge hotfix to main'
-git push
-
-# checkout to develop branch and delete hotfix branch
-git checkout develop
-git pull
-git branch -D hotfix
-```
-
-## Fix the issue when changes to the .gitignore file has no effect
-
-```sh
-git rm -r --cached .
-git add --all && git commit -m "fix: .gitignore"
-reload IDE
-```
-
-## Useful commands
-
-```sh
-git clone git@github.com:raven-devs/create-be-template.git another-project-dir
-
+# list all branches local / remote
 git branch
+git branch -r
+
+# delete a branch local / remote
 git branch -D $branch
+git push origin --delete $branch
 
+# show remote
+git remote
 git remote show origin
-git config --get remote.origin.url
-git ls-remote git@github.com:raven-devs/create-be-template.git
+git ls-remote $repo_url
 
+# config
+git config --get remote.origin.url
+git config --local --list
+git config --local user.name $user_name
+git config --local user.email $user_email
+
+# checkout to a new branch from a current one, commit changes and push
 git checkout -b $new_branch
 git add --all
-git commit -m 'feat: new feature'
+git commit -m $message
 git push
 
+# commit with a tag
+git add -all
+git commit -m $message
+git tag -f v1.0
+git push origin --tags
+
+# checkout to a previouse branch and pull the latest changes
 git checkout -
 git checkout $branch
 git pull
 
+# merge a branch onto a current branch
 git merge $branch
-```
 
-## .gitignore cache issue fix
+# cancel all changes
+git reset --hard HEAD
 
-```bash
+# cancel a last merge
+git reset --merge
+git merge --abort
+
+# cancel a previous local commit
+git reset --hard HEAD~1
+
+# cancel a last push to a branch
+git push -f origin $last_ok_commit:$branch
+git push -f origin 6f55ff2744b09872fa4fd8dfdb2f4c724d2c9916:develop
+
+# force to overwrite local with remote
+git fetch --all
+git reset --hard origin/$branch_name
+
+# force to overwrite remote with local
+git push origin $branch --force
+
+# overwrite a remote branch with a different local branch, use the local-name:remote-name syntax for git push
+git push origin $new_branch:$old_branch -f
+
+# display log
+git log
+git log --oneline
+
+# fixing the .gitignore cache issue
 git rm -r --cached .
 git add --all && git commit -m "fix: .gitignore cache issue"
+reload IDE
 
+# fixing the issue when changes to the .gitignore file has no effect
+git rm -r --cached .
+git add --all && git commit -m "fix: .gitignore"
 reload IDE
 ```

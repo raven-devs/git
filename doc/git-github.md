@@ -1,4 +1,4 @@
-# GitHub
+# Git: GitHub
 
 ## SSH
 
@@ -37,17 +37,20 @@ git clone $ssh_config_host:$account_id/$repo_id.git # using ssh config
 cd $repo_id
 git config user.name "$account_id"
 git config user.email "$account_email"
+```
 
-# examples:
-# git clone github.com-spetushkou:raven-devs/project1.git # using ssh config
-# git clone git@github.com:raven-devs/project1.git  # using default
-# cd project1
-# git config user.name spetushkou
-# git config user.email sergey.petushkou@gmail.com
+#### Example
 
-# git clone github.com-spetushkov:spetushkov/project2.git # using ssh config
-# git clone git@github.com:spetushkov/project2.git  # using default
-# cd project2
-# git config user.name spetushkov
-# git config user.email sergey.petushkov@gmail.com
+```bash
+git clone github.com-spetushkou:raven-devs/project1.git # using ssh config
+git clone git@github.com:raven-devs/project1.git  # using default
+cd project1
+git config user.name spetushkou
+git config user.email sergey.petushkou@gmail.com
+
+git clone github.com-spetushkov:spetushkov/project2.git # using ssh config
+git clone git@github.com:spetushkov/project2.git  # using default
+cd project2
+git config user.name spetushkov
+git config user.email sergey.petushkov@gmail.com
 ```

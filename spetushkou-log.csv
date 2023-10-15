@@ -1,9 +1,0 @@
-2023-08-29T17:50:25.905Z;spetushkou;[package-install]: initialize a remote git repo done
-2023-08-31T09:04:49.555Z;spetushkou;[package-init]: prepare local project done
-2023-08-31T09:04:49.559Z;spetushkou;[package-init]: initialize package.json done
-2023-08-31T09:04:49.562Z;spetushkou;[package-init]: npm install done
-2023-08-31T09:04:49.565Z;spetushkou;[package-init]: initialize CHANGELOG.md done
-2023-08-31T09:04:49.567Z;spetushkou;[package-init]: initialize TODO done
-2023-08-31T09:04:49.570Z;spetushkou;[package-init]: initialize README.md done
-2023-08-31T09:04:53.910Z;spetushkou;[package-init]: initialize a remote git repo done
-2023-08-31T09:04:57.624Z;spetushkou;[package-init]: initialize a local git repo done

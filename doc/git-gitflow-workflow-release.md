@@ -1,4 +1,4 @@
-# Release (Gitflow Workflow)
+# Git: Gitflow Workflow - Release
 
 ```sh
 # create release/0.1.0 branch from develop branch
