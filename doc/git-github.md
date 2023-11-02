@@ -15,6 +15,14 @@ ssh-add ~/.ssh/id_rsa_$account_id
 # add a new SSH key to a GitHub account
 ```
 
+### Error: fatal: Could not read from remote repository. Please make sure you have the correct access right and the repository exists.
+
+```bash
+ssh-add -l
+ssh-add ~/.ssh/id_rsa_spetushkou
+ssh-add ~/.ssh/id_rsa_spetushkov
+```
+
 ### Update SSH config
 
 Open `~/.ssh/config` file and add:
