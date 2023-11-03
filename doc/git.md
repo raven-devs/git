@@ -46,12 +46,12 @@ git push origin --tags
 git merge $branch
 
 # unmodify
-git checkout -- .
-git checkout -- $file_path
+git restore .
+git restore $file_path
 
 # unstage
-git reset --hard HEAD
-git reset --hard HEAD $file_name
+git restore --staged .
+git restore --staged $file_path
 
 # cancel a previous local commit
 git reset --hard HEAD~1
