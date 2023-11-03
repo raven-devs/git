@@ -45,10 +45,13 @@ git pull
 # merge a branch onto a current branch
 git merge $branch
 
-# cancel all changes
-git reset --hard HEAD
+# unchange
 
-# cancel a last merge
+# unstage
+git reset --hard HEAD
+git reset --hard HEAD $file
+
+# unmerge
 git reset --merge
 git merge --abort
 
@@ -69,9 +72,16 @@ git push origin $branch --force
 # overwrite a remote branch with a different local branch, use the local-name:remote-name syntax for git push
 git push origin $new_branch:$old_branch -f
 
-# display log
+# display log and diff
 git log
-git log --oneline
+git log --pretty=oneline
+git log --pretty=oneline --graph
+git log --pretty=fulle
+git log --stat --summary
+git log --author=spetushkov --since="2023-01-01" --pretty=oneline
+git log --author="spetushkov" --since="2023-01-01" --pretty=oneline | wc -l
+git diff
+git diff --staged
 
 # fixing the .gitignore cache issue
 git rm -r --cached .
@@ -83,3 +93,7 @@ git rm -r --cached .
 git add --all && git commit -m "fix: .gitignore"
 reload IDE
 ```
+
+## pull vs fetch
+
+The difference between pull and fetch is: Fetch just downloads the objects and refs from a remote repository and normally updates the remote tracking branches. Pull, however, will not only download the changes, but also merges them - it is the combination of fetch and merge.
