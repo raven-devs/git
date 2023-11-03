@@ -47,11 +47,11 @@ git merge $branch
 
 # unmodify
 git checkout -- .
-git checkout -- $file
+git checkout -- $file_path
 
 # unstage
 git reset --hard HEAD
-git reset --hard HEAD $file
+git reset --hard HEAD $file_name
 
 # cancel a previous local commit
 git reset --hard HEAD~1
