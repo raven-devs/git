@@ -3,8 +3,19 @@
 ## Commamds
 
 ```bash
+# config
+git config --get remote.origin.url
+git config --local --list
+git config --local user.name $user_name
+git config --local user.email $user_email
+
 # clone a repo
 git clone $repo_url $dir
+
+# show remote
+git remote
+git remote show origin
+git ls-remote $repo_url
 
 # list all branches local / remote
 git branch
@@ -14,22 +25,16 @@ git branch -r
 git branch -D $branch
 git push origin --delete $branch
 
-# show remote
-git remote
-git remote show origin
-git ls-remote $repo_url
-
-# config
-git config --get remote.origin.url
-git config --local --list
-git config --local user.name $user_name
-git config --local user.email $user_email
-
 # checkout to a new branch from a current one, commit changes and push
 git checkout -b $new_branch
 git add --all
 git commit -m $message
 git push
+
+# checkout to a previouse branch and pull the latest changes
+git checkout -
+git checkout $branch
+git pull
 
 # commit with a tag
 git add -all
@@ -37,15 +42,10 @@ git commit -m $message
 git tag -f v1.0
 git push origin --tags
 
-# checkout to a previouse branch and pull the latest changes
-git checkout -
-git checkout $branch
-git pull
-
 # merge a branch onto a current branch
 git merge $branch
 
-# unchange
+# unmodify
 git checkout -- .
 git checkout -- $file
 
@@ -53,16 +53,16 @@ git checkout -- $file
 git reset --hard HEAD
 git reset --hard HEAD $file
 
-# unmerge
-git reset --merge
-git merge --abort
-
 # cancel a previous local commit
 git reset --hard HEAD~1
 
 # cancel a last push to a branch
 git push -f origin $last_ok_commit:$branch
 git push -f origin 6f55ff2744b09872fa4fd8dfdb2f4c724d2c9916:develop
+
+# unmerge
+git reset --merge
+git merge --abort
 
 # force to overwrite local with remote
 git fetch --all
@@ -85,14 +85,9 @@ git log --author="spetushkov" --since="2023-01-01" --pretty=oneline | wc -l
 git diff
 git diff --staged
 
-# fixing the .gitignore cache issue
+# fix a .gitignore cache issue
 git rm -r --cached .
 git add --all && git commit -m "fix: .gitignore cache issue"
-reload IDE
-
-# fixing the issue when changes to the .gitignore file has no effect
-git rm -r --cached .
-git add --all && git commit -m "fix: .gitignore"
 reload IDE
 ```
 
