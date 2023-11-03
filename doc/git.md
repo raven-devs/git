@@ -46,6 +46,8 @@ git pull
 git merge $branch
 
 # unchange
+git checkout -- .
+git checkout -- $file
 
 # unstage
 git reset --hard HEAD
