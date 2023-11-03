@@ -10,20 +10,20 @@ git config --local user.name $user_name
 git config --local user.email $user_email
 
 # clone a repo
+git clone $repo_url
 git clone $repo_url $dir
 
-# show remote
+# add a remote
+git remote add origin $repo_url
+
+# show a remote
 git remote
 git remote show origin
 git ls-remote $repo_url
 
-# list all branches local / remote
-git branch
-git branch -r
-
-# delete a branch local / remote
-git branch -D $branch
-git push origin --delete $branch
+# push to a remote
+git push
+git push origin $branch
 
 # checkout to a new branch from a current one, commit changes and push
 git checkout -b $new_branch
@@ -36,8 +36,28 @@ git checkout -
 git checkout $branch
 git pull
 
+# list branches
+git branch
+git branch -r # remote
+
+# delete a branch
+git branch -D $branch
+git push origin --delete $branch # remote
+
+# create a tag
+git tag $tag
+
+# list tags
+git tag
+
+# delete a tag
+git tag -d $tag
+
+# push tags
+git push origin --tags # all tags
+git push origin $tag
+
 # commit with a tag
-git add -all
 git commit -m $message
 git tag -f v1.0
 git push origin --tags
