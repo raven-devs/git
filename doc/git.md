@@ -52,6 +52,7 @@ git tag
 
 # delete a tag
 git tag -d $tag
+git push origin --delete $tag # remote
 
 # push tags
 git push origin --tags # all tags
@@ -110,7 +111,3 @@ git rm -r --cached .
 git add --all && git commit -m "fix: .gitignore cache issue"
 reload IDE
 ```
-
-## pull vs fetch
-
-The difference between pull and fetch is: Fetch just downloads the objects and refs from a remote repository and normally updates the remote tracking branches. Pull, however, will not only download the changes, but also merges them - it is the combination of fetch and merge.
